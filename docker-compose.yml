@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  testing-data:
+    build:
+      args:
+        USER: user
+        UID: 2000
+      context: .
+      dockerfile: Dockerfile
+    image: testing-data
+    container_name: testing-data
+    volumes:
+      - .:/app
+      - ./public:/usr/app/public
+    ports:
+      - "3006:3006"
+    restart: on-failure
